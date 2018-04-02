@@ -57,6 +57,11 @@ function zplug-install(){
 	zplug "mollifier/cd-gitroot"
 	zplug "b4b4r07/enhancd", use:enhancd.sh
 }
+function cdg(){
+	if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+		cd `git rev-parse --show-toplevel`/$1
+	fi
+}
 	
 if [ -v $SSH_CONNECTION ]; then
 	zplug-init
